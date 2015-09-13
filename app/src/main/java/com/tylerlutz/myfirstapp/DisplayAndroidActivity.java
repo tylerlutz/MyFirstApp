@@ -4,23 +4,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.content.Intent;
-import android.widget.EditText;
+import android.widget.ImageView;
 
-public class MyActivity extends AppCompatActivity {
-    public final static String EXTRA_MESSAGE = "com.tylerlutz.myfirstapp.MESSAGE";
+public class DisplayAndroidActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
+
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.android);
+
+        setContentView(imageView);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_my, menu);
+        getMenuInflater().inflate(R.menu.menu_display_android, menu);
         return true;
     }
 
@@ -38,19 +39,4 @@ public class MyActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    /** Called when the user clicks the Send button */
-    public void sendMessage(View view) {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }
-
-    public void displayAndroid(View view) {
-        Intent intent = new Intent(this, DisplayAndroidActivity.class);
-        startActivity(intent);
-    }
-
 }
